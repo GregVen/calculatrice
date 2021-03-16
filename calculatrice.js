@@ -1,110 +1,70 @@
-let choix = prompt("Quelle opération voulez-vous effectuer :\n1: Addition\n2:Soustraction\n3:Multiplication\n4:Division");
-choix = parseInt(choix);
 
-// while (choix != 1 || choix != 2 || choix != 3 || choix != 4 ){
-while (choix != 1 ){
-    choix = prompt("Pas bon choix, entrer un autre");
-    choix = parseInt(choix);
-     };
-
-let premierNombre = prompt ("Entrez le premier nombre");
-premierNombre = parseFloat (premierNombre);
-
-while (isNaN(premierNombre) ){
-    premierNombre = prompt("Ce que vous avez entré n'était pas un nombre, entrez votre premier nombre:");
-     };
+// var choix = Number(prompt('Quelle opération désirez-vous effectuer?\n\n1.Additionner\n2.Soustraire\n3.Multiplier\n4.Diviser\n\nQuel est votre choix ?'));
+do {
+    //J'utilise une variable pour avoir un scope global
+    var choix = Number(prompt('Quelle opération désirez-vous effectuer?\n\n1.Additionner\n2.Soustraire\n3.Multiplier\n4.Diviser\n\nQuel est votre choix ?'));
+} while (choix != 1 && choix != 2 && choix != 3 && choix !=4 );
 
 
-let deuxiemeNombre = prompt ("Entrez le deuxieme nombre");
-deuxiemeNombre = parseFloat (deuxiemeNombre);
+// var premierNombre = Number(prompt('Quel est votre premier nombre ?'));
+do {
+    var premierNombre = Number(prompt("Pouvez-vous donner votre premier nombre ?"));
+} while (isNaN(premierNombre));
 
-while (isNaN(deuxiemeNombre) ){
-    deuxiemeNombre = prompt("Ce que vous avez entré n'était pas un nombre, entrez votre premier nombre:");
-    };
+
+// var deuxiemeNombre = Number(prompt('Quel est votre deuxieme nombre ?'));
+do {
+    var deuxiemeNombre = Number(prompt("Pouvez-vous donner votre deuxieme nombre ?"));
+} while (isNaN(premierNombre));
+
+// let deuxiemeNombre = prompt ("Entrez le deuxieme nombre");
+// deuxiemeNombre = parseFloat (deuxiemeNombre);
+
+// while (isNaN(deuxiemeNombre) ){
+//     deuxiemeNombre = prompt("Ce que vous avez entré n'était pas un nombre, entrez votre premier nombre:");
+//     };
 
     
-function addition(premierNombre,deuxiemeNombre){
-    return resultat = premierNombre + deuxiemeNombre;
+function addition(nb1,nb2){
+    return nb1 + nb2;
 }
 
-resultat2 = premierNombre + deuxiemeNombre
-// function soustraction(premierNombre,deuxiemeNombre){
-//     return premierNombre - deuxiemeNombre;
-// }
+function soustraction(nb1,nb2){
+    return nb1 - nb2;
+}
 
-// function multiplication(premierNombre,deuxiemeNombre){
-//     return premierNombre * deuxiemeNombre;
-// }
+function multiplication(nb1,nb2){
+    return nb1 * nb2;
+}
 
-// function division(premierNombre,deuxiemeNombre){
-//     return premierNombre / deuxiemeNombre;
-// }
-
-
+function division(nb1,nb2){
+    if(nb2 == 0){
+        alert(`Il est impossible de diviser par 0`);
+        }
+    else {return nb1 / nb2}
+}
 
 switch(choix){
-    case 1: addition();
-            type1 = typeof(premierNombre);
-            type2 = typeof(deuxiemeNombre);
-            type3 = typeof(resultat);
-            type4 = parseFloat(resultat);
-        alert(`resultat: ${premierNombre} + ${deuxiemeNombre} = ${resultat} ${addition()} ${type1} ${type2} ${type3} ${type4}\n
-                         ${premierNombre} + ${deuxiemeNombre} = ${premierNombre + deuxiemeNombre}\n
-                         ${premierNombre} + ${deuxiemeNombre} = ${resultat2}`);
+    case 1: resultat = addition(premierNombre,deuxiemeNombre);
+            operateur = "+";
             break;
-    case 2: resultat = soustraction();
-        alert(`resultat: ${premierNombre} - ${deuxiemeNombre} = ${resultat}`);
+    case 2: resultat = soustraction(premierNombre,deuxiemeNombre);
+            operateur = "-";
             break;
-    case 3: resultat = multiplication();
-        alert(`resultat: ${premierNombre} x ${deuxiemeNombre} = ${resultat}`);
+    case 3: resultat = multiplication(premierNombre,deuxiemeNombre);
+            operateur = "x";
             break;
-    case 4: resultat = division();
-        alert(`resultat: ${premierNombre} / ${deuxiemeNombre} = ${resultat}`);
+    case 4: resultat = division(premierNombre,deuxiemeNombre);
+            operateur = "/";
             break;
-    default: alert("pas de bon choix");
-        };
-
-// switch(choix){
-//     case 1: resultat = premierNombre + deuxiemeNombre;
-//             let container = document.getElementById("container");
-//             container.innerHTML = `<p>resultat: ${premierNombre} + ${deuxiemeNombre} = ${resultat}</p>`;
-//                 break;
-//     case 2: resultat = premierNombre - deuxiemeNombre;
-//             let container = document.getElementById("container");
-//             container.innerHTML = `<p>resultat: ${premierNombre} - ${deuxiemeNombre} = ${resultat}</p>`;
-//                 break;
-//     case 3: resultat = premierNombre * deuxiemeNombre;
-//             // let container = document.getElementById("container");
-//             // container.innerHTML = `<p>resultat: ${premierNombre} x ${deuxiemeNombre} = ${resultat}</p>`;
-//                 break;
-//     case 4: resultat = premierNombre / deuxiemeNombre;
-//             // let container = document.getElementById("container");
-//             // container.innerHTML = `<p>resultat: ${premierNombre} / ${deuxiemeNombre} = ${resultat}</p>`;
-//                 break;
-//     default: alert("pas de chiffres");
-// }
+    default : alert(`Une erreur est survenue`);
+             };
 
 
-// let container = document.getElementById("container");
-    // container.innerHTML = `<p>resultat: ${premierNombre} + ${deuxiemeNombre} = ${resultat}</p>`;
+alert(`le resultat de l'opération ${premierNombre} ${operateur} ${deuxiemeNombre} est ${resultat}`)
 
 
 
-// if (choix == 1){
-//     let container = document.getElementById("container");
-//     container.innerHTML = `<p>resultat: ${premierNombre} + ${deuxiemeNombre} = ${premierNombre + deuxiemeNombre}</p>`;
-//     }
-// else if (choix == 2){
-//     let container = document.getElementById("container");
-//     container.innerHTML = `<p>resultat: ${premierNombre} - ${deuxiemeNombre} = ${premierNombre - deuxiemeNombre}</p>`;
-//     }
-// else if (choix == 3){
-//         let container = document.getElementById("container");
-//         container.innerHTML = `<p>resultat: ${premierNombre} x ${deuxiemeNombre} = ${premierNombre * deuxiemeNombre}</p>`;
-//     }
-// else if (choix == 3){
-//         let container = document.getElementById("container");
-//         container.innerHTML = `<p>resultat: ${premierNombre} / ${deuxiemeNombre} = ${premierNombre / deuxiemeNombre}</p>`;
-//     }
+
 
 
